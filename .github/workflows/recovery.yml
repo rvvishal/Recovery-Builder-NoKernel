@@ -16,9 +16,10 @@ on:
 env:
   MANIFEST: https://gitlab.com/OrangeFox/Manifest.git
   MANIFEST_BRANCH: fox_9.0
-  DEVICE: rosy
-  DT_LINK: https://github.com/ElytrA8/recovery_rosy
-  DT_PATH: device/xiaomi/rosy
+  DEVICE: A33f
+  DT_LINK: https://gitlab.com/oppo-msm8916/twrp_device_oppo_a33f.git
+  DT_PATH: device/oppo/A33f
+  DT_BRANCH: android-5.1
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
@@ -51,7 +52,7 @@ jobs:
              cd work
              repo init -u $MANIFEST -b $MANIFEST_BRANCH --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
              repo sync -j4
-             git clone $DT_LINK --depth=1 --single-branch $DT_PATH
+             git clone $DT_LINK --depth=1 $DT_BRANCH $DT_PATH
              
        - name: Build
          run: |
